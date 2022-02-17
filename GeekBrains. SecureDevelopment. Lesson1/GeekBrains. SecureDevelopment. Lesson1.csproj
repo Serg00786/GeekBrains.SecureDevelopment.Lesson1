@@ -1,9 +1,0 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
-
-  <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>GeekBrains._SecureDevelopment._Lesson1</RootNamespace>
-  </PropertyGroup>
-
-
-</Project>
