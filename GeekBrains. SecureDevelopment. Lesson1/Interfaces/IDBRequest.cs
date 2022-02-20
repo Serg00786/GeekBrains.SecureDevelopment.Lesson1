@@ -4,9 +4,8 @@ using System.Threading.Tasks;
 
 namespace GeekBrains._SecureDevelopment._Lesson1.Interfaces
 {
-    internal interface IDBRequest
+    public interface IDBRequest
     {
-        Task CreateTableWithBankCard(Bankcard models);
         Task InsertRows(Bankcard models);
         Task UpdateRows(Bankcard models);
         Task<Bankcard> SelectRows(int id);

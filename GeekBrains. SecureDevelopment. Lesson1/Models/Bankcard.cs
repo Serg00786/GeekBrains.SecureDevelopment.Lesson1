@@ -2,11 +2,11 @@
 
 namespace GeekBrains._SecureDevelopment._Lesson1.Models
 {
-    internal class Bankcard
+    public class Bankcard
     {
-        internal int Id { get; set; }   
-        internal bool Credit { get; set; }
-        internal DateTime ValidDate {get; set; }
-        internal int SecreteCode { get; set; }
+        public int Id { get; set; }   
+        public bool Credit { get; set; }
+        public DateTime ValidDate {get; set; }
+        public int SecreteCode { get; set; }
     }
 }

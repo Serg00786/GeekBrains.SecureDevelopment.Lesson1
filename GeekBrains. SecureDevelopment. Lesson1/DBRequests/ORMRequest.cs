@@ -6,11 +6,6 @@ namespace GeekBrains._SecureDevelopment._Lesson1.DBRequests
 {
     internal class ORMRequest : IDBRequest
     {
-        public Task CreateTableWithBankCard(Bankcard models)
-        {
-            throw new System.NotImplementedException();
-        }
-
         public Task InsertRows(Bankcard models)
         {
             throw new System.NotImplementedException();

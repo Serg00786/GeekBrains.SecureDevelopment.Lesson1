@@ -1,26 +1,27 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using System;
+using GeekBrains._SecureDevelopment._Lesson1.Interfaces;
 
 namespace GeekBrains._SecureDevelopment._Lesson1.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class WeatherForecastController : ControllerBase
+    public class BankCardController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
         {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
 
-        private readonly ILogger<WeatherForecastController> _logger;
+        private readonly IDBRequest _IDBRequest;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public BankCardController(IDBRequest dBRequest)
         {
-            _logger = logger;
+            _IDBRequest = dBRequest;
         }
 
         [HttpGet]
