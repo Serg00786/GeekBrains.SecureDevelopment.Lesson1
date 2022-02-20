@@ -1,8 +1,10 @@
 using GeekBrains._SecureDevelopment._Lesson1.DBRequests;
 using GeekBrains._SecureDevelopment._Lesson1.Interfaces;
+using GeekBrains._SecureDevelopment._Lesson1.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -28,6 +30,8 @@ namespace GeekBrains._SecureDevelopment._Lesson1
         {
             services.AddControllers();
             services.AddScoped<IDBRequest, ORMRequest>();
+            services.AddDbContext<AppDbContext>(options =>
+            options.UseNpgsql(Configuration.GetConnectionString("BloggingDatabase")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -5,18 +5,23 @@ namespace GeekBrains._SecureDevelopment._Lesson1
 {
     internal class AppDbContext : DbContext
     {
+        public AppDbContext()
+        {
+        }
+
         internal AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
 
         }
-        internal DbSet<Bankcard> ListBankCard { get; set; }
+        internal DbSet<Bankcard> listbankcard { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-                optionsBuilder.UseNpgsql("Data Source=localhost;Initial Catalog=postgrdb;User ID=user;Password=123;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
-            }
-        }
+            => optionsBuilder.UseNpgsql("Host=host.docker.internal;Port=5432;Database=postgrdb;Username=user;Password=123");
+
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.HasDefaultSchema("TECHREP");
+        //}
+
     }
 }

@@ -25,4 +25,3 @@ C:\Users\HomePC\source\repos\GeekBrains.SecureDevelopment.Lesson1\GeekBrains.Sec
 C:\Users\HomePC\source\repos\GeekBrains.SecureDevelopment.Lesson1\GeekBrains.SecureDevelopment.Lesson1\bin\Debug\Microsoft.Extensions.Configuration.Abstractions.dll
 C:\Users\HomePC\source\repos\GeekBrains.SecureDevelopment.Lesson1\GeekBrains.SecureDevelopment.Lesson1\bin\Debug\Npgsql.EntityFrameworkCore.PostgreSQL.dll
 C:\Users\HomePC\source\repos\GeekBrains.SecureDevelopment.Lesson1\GeekBrains.SecureDevelopment.Lesson1\bin\Debug\Npgsql.dll
-C:\Users\HomePC\source\repos\GeekBrains.SecureDevelopment.Lesson1\GeekBrains.SecureDevelopment.Lesson1\bin\Debug\Microsoft.EntityFrameworkCore.Relational.dll

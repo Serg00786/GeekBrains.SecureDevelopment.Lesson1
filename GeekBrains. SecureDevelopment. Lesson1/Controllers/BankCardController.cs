@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System;
 using GeekBrains._SecureDevelopment._Lesson1.Interfaces;
+using System.Threading.Tasks;
+using GeekBrains._SecureDevelopment._Lesson1.Models;
 
 namespace GeekBrains._SecureDevelopment._Lesson1.Controllers
 {
@@ -12,29 +14,28 @@ namespace GeekBrains._SecureDevelopment._Lesson1.Controllers
     [Route("[controller]")]
     public class BankCardController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
+        private readonly IDBRequest _dbRequest;
 
-        private readonly IDBRequest _IDBRequest;
-
-        public BankCardController(IDBRequest dBRequest)
+        public BankCardController(
+            IDBRequest dBRequest)
         {
-            _IDBRequest = dBRequest;
+            _dbRequest = dBRequest;
+        }
+
+        [HttpPost]
+        [Route("createbankcard")]
+        public IActionResult CreateOrder([FromBody] Bankcard bankcard)
+        {
+            _dbRequest.InsertRows(bankcard);
+
+            return Ok("Success");
         }
 
         [HttpGet]
-        public IEnumerable<WeatherForecast> Get()
+        [Route("getall")]
+        public async Task<List<Bankcard>> GetAll()
         {
-            var rng = new Random();
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                Date = DateTime.Now.AddDays(index),
-                TemperatureC = rng.Next(-20, 55),
-                Summary = Summaries[rng.Next(Summaries.Length)]
-            })
-            .ToArray();
+            return await _dbRequest.SelectRows(1);
         }
     }
 }
