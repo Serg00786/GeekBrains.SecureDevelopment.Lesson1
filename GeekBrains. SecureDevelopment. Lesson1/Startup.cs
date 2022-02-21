@@ -29,7 +29,7 @@ namespace GeekBrains._SecureDevelopment._Lesson1
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddScoped<IDBRequest, ORMRequest>();
+            services.AddScoped<IDBRequest, ADONetRequest>();
             services.AddDbContext<AppDbContext>(options =>
             options.UseNpgsql(Configuration.GetConnectionString("BloggingDatabase")));
         }

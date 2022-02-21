@@ -35,7 +35,7 @@ namespace GeekBrains._SecureDevelopment._Lesson1.Controllers
         [Route("getall")]
         public async Task<List<Bankcard>> GetAll()
         {
-            return await _dbRequest.SelectRows(1);
+            return await _dbRequest.SelectRows();
         }
     }
 }

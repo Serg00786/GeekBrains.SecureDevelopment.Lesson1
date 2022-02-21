@@ -7,10 +7,8 @@ namespace GeekBrains._SecureDevelopment._Lesson1.Interfaces
 {
     public interface IDBRequest
     {
-        void InsertRows(Bankcard models);
+        Task InsertRows(Bankcard models);
         Task UpdateRows(Bankcard models);
-        Task<List<Bankcard>> SelectRows(int id);
-
-
+        Task<List<Bankcard>> SelectRows();
     }
 }

@@ -11,23 +11,33 @@ namespace GeekBrains._SecureDevelopment._Lesson1.DBRequests
     internal class ORMRequest : IDBRequest
     {
         AppDbContext db = new AppDbContext();
-        public void InsertRows(Bankcard models)
+        public async Task InsertRows(Bankcard models)
         {
  
-            db.Add(models);
-            db.SaveChanges();
-
+            if (models != null)
+            {
+                db.Add(models);
+                await db.SaveChangesAsync();
+            }
+ 
         }
 
-        public async Task<List<Bankcard>> SelectRows(int id)
+        public async Task<List<Bankcard>> SelectRows()
         {
             var Result = await db.listbankcard.ToListAsync();
             return Result;
         }
 
-        public Task UpdateRows(Bankcard models)
+        public async Task UpdateRows(Bankcard models)
         {
-            throw new System.NotImplementedException();
+            var result = db.listbankcard.SingleOrDefault(b => b.Id == models.Id);
+            if (result != null)
+            {
+                result.Credit = models.Credit;
+                result.ValidDate = models.ValidDate;
+                result.SecreteCode = models.SecreteCode;
+                await db.SaveChangesAsync();
+            }
         }
     }
 }
