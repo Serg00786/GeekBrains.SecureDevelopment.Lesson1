@@ -3,8 +3,12 @@ services:
     build:
       context: C:\Users\HomePC\source\repos\GeekBrains.SecureDevelopment.Lesson1\GeekBrains.SecureDevelopment.Lesson1
       dockerfile: GeekBrains. SecureDevelopment. Lesson1/Dockerfile
+    depends_on:
+      postgres:
+        condition: service_started
     environment:
       ASPNETCORE_ENVIRONMENT: Development
+      ConnectionStrings__Default: Host=Localhost;DataBase=postgrdb;User Id=user;Password=123;
     image: geekbrainssecuredevelopmentlesson1
     ports:
     - target: 80

@@ -8,13 +8,17 @@ using System.Threading.Tasks;
 
 namespace GeekBrains._SecureDevelopment._Lesson1.DBRequests
 {
-    public class ADONetRequest : IDBRequest, IDisposable
+    public class ADONetRequest : IDBRequest
     {
+        NpgsqlConnection conn;
+        public ADONetRequest()
+        {
+            string connString = "Host=host.docker.internal;Port=5432;Database=postgrdb;Username=user;Password=123";
+            conn = new NpgsqlConnection(connString);
+        }
 
         public async Task InsertRows(Bankcard models)
         {
-            string connString = "Host=host.docker.internal;Port=5432;Database=postgrdb;Username=user;Password=123";
-            await using var conn = new NpgsqlConnection(connString);
             await conn.OpenAsync();
 
             try
@@ -32,43 +36,49 @@ namespace GeekBrains._SecureDevelopment._Lesson1.DBRequests
             {
                 throw new Exception(ex.ToString());
             }
+            finally
+            {
+                conn.Close();
+            }
            
-            Dispose();
         }
 
         public async Task<List<Bankcard>> SelectRows()
         {
 
-            string connString = "Host=host.docker.internal;Username=user;Password=123;Database=postgrdb";
-            await using var conn = new NpgsqlConnection(connString);
             await conn.OpenAsync();
             // Retrieve all rows
             NpgsqlDataReader reader;
             List<Bankcard> FinalList = new List<Bankcard>();
-            await using (var cmd = new NpgsqlCommand("SELECT * FROM public.listbankcard", conn))
-            await using (reader = await cmd.ExecuteReaderAsync())
+            try
             {
-                while (await reader.ReadAsync())
+
+
+                await using (var cmd = new NpgsqlCommand("SELECT * FROM public.listbankcard", conn))
+                await using (reader = await cmd.ExecuteReaderAsync())
                 {
-                    var Id = await reader.GetFieldValueAsync<string>(0);
-                    var Credit = await reader.GetFieldValueAsync<bool>(1);
-                    var ValidDate = await reader.GetFieldValueAsync<DateTime>(2);
-                    var SecreteCode = await reader.GetFieldValueAsync<int>(3);
-
-                    FinalList.Add(new Bankcard()
+                    while (await reader.ReadAsync())
                     {
-                        Id = Convert.ToInt32(Id),
-                        Credit = Credit,
-                        ValidDate = ValidDate,
-                        SecreteCode = SecreteCode
-                    });
+                        FinalList.Add(new Bankcard()
+                        {
+                            Id = await reader.GetFieldValueAsync<int>(0),
+                            Credit = await reader.GetFieldValueAsync<bool>(1),
+                            ValidDate = await reader.GetFieldValueAsync<DateTime>(2),
+                            SecreteCode = await reader.GetFieldValueAsync<int>(3)
+                        });
+                    }
+
                 }
-
             }
+            catch(Exception ex)
+            {
+                throw new Exception (ex.ToString());
+            }
+            finally { conn.Close(); }
 
-            Dispose();
 
-            return new List<Bankcard>();
+
+            return FinalList;
 
 
         }
@@ -77,12 +87,5 @@ namespace GeekBrains._SecureDevelopment._Lesson1.DBRequests
         {
             throw new System.NotImplementedException();
         }
-        public void Dispose()
-        {
-            conn.Close();
-             conn.Dispose();
-        }
-
-
     }
 }

@@ -8,10 +8,14 @@ services:
         com.microsoft.visual-studio.project-name: GeekBrains.SecureDevelopment.Lesson1
       target: base
     container_name: GeekBrains.SecureDevelopment.Lesson1
+    depends_on:
+      postgres:
+        condition: service_started
     entrypoint: tail -f /dev/null
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS: "true"
+      ConnectionStrings__Default: Host=Localhost;DataBase=postgrdb;User Id=user;Password=123;
       DOTNET_USE_POLLING_FILE_WATCHER: '1'
       NUGET_FALLBACK_PACKAGES: /root/.nuget/fallbackpackages
     image: geekbrainssecuredevelopmentlesson1:dev
