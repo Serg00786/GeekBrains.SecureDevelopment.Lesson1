@@ -1,0 +1,26 @@
+version: '3.4'
+
+services:
+  geekbrains.securedevelopment.lesson1:
+    image: ${DOCKER_REGISTRY-}geekbrainssecuredevelopmentlesson1
+    build:
+      context: .
+      dockerfile: GeekBrains. SecureDevelopment. Lesson1/Dockerfile
+ 
+    environment:
+      ConnectionStrings__Default: Host=Localhost;DataBase=postgrdb;User Id=user;Password=123;
+    depends_on:
+    - postgres
+
+  postgres:
+    image: postgres:13.3
+    environment:
+      POSTGRES_DB: "postgrdb"
+      POSTGRES_USER: "user"
+      POSTGRES_PASSWORD: "123"
+    ports:
+      - "5432:5432"
+
+
+
+

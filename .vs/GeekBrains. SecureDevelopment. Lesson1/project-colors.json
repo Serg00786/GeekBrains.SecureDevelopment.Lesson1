@@ -5,7 +5,12 @@
       "ProjectGuid": "66542ac5-6ec3-4628-806d-5da4885b6987",
       "DisplayName": "GeekBrains. SecureDevelopment. Lesson1",
       "ColorIndex": 0
+    },
+    "396f50ad-d933-41f3-a9c8-b419b53c2b67": {
+      "ProjectGuid": "396f50ad-d933-41f3-a9c8-b419b53c2b67",
+      "DisplayName": "docker-compose",
+      "ColorIndex": 1
     }
   },
-  "NextColorIndex": 1
+  "NextColorIndex": 2
 }
