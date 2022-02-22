@@ -52,4 +52,3 @@ C:\Users\alekseevsv\source\repos\GeekBrains.SecureDevelopment.Lesson1\GeekBrains
 C:\Users\alekseevsv\source\repos\GeekBrains.SecureDevelopment.Lesson1\GeekBrains.SecureDevelopment.Lesson1\obj\Debug\docker-compose.dcproj.AssemblyReference.cache
 C:\Users\alekseevsv\source\repos\GeekBrains.SecureDevelopment.Lesson1\GeekBrains.SecureDevelopment.Lesson1\obj\Debug\docker-compose.dcproj.CoreCompileInputs.cache
 C:\Users\alekseevsv\source\repos\GeekBrains.SecureDevelopment.Lesson1\GeekBrains.SecureDevelopment.Lesson1\obj\Debug\docker-compose.dcproj.CopyComplete
-C:\Users\alekseevsv\source\repos\GeekBrains.SecureDevelopment.Lesson1\GeekBrains.SecureDevelopment.Lesson1\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll

@@ -16,8 +16,16 @@ namespace GeekBrains._SecureDevelopment._Lesson1.DBRequests
  
             if (models != null)
             {
-                db.Add(models);
-                await db.SaveChangesAsync();
+                try
+                {
+                    db.Add(models);
+                    await db.SaveChangesAsync();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
+                
             }
  
         }
